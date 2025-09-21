@@ -188,7 +188,7 @@ public class cloud {
     
     
     
-    @Test(priority = 6)
+    /*@Test(priority = 6)
     public void test_createBranch() throws InterruptedException {
 
         // 👉 Step 1: Navigate to Branch Management
@@ -364,7 +364,7 @@ public class cloud {
             return;
         }
 
-    }
+    }*/
 
     
     
@@ -1112,6 +1112,286 @@ public class cloud {
     
     }*/
     
+    
+   /* @Test(priority = 13)
+    public void test_Package_Benefits() throws InterruptedException {
+
+    	// --- Navigate to Partners page ---
+    	driver.findElement(By.xpath("//span[normalize-space()='Benefits']")).click();
+    	Thread.sleep(2000);
+	   	
+    	
+    	// --- Click on Create Partner ---
+    	driver.findElement(By.xpath("//button[normalize-space()='Create Benefit']")).click();
+    	Thread.sleep(2000);
+    	
+    	// --- Benefit Name (English) ---
+    	WebElement benefitNameEnInput = driver.findElement(By.name("name_en"));
+    	benefitNameEnInput.clear();
+    	String uniqueSuffix = null;
+		benefitNameEnInput.sendKeys("Benefit_EN_" + uniqueSuffix);
+
+    	// --- Benefit Name (Arabic) ---
+    	WebElement benefitNameArInput = driver.findElement(By.name("name_ar"));
+    	benefitNameArInput.clear();
+    	benefitNameArInput.sendKeys("ميزة_AR_" + uniqueSuffix);
+
+//    	// --- Active Status (Dropdown) ---
+//    	WebElement activeStatusDropdown = driver.findElement(By.xpath("//button[@role='combobox']"));
+//    	activeStatusDropdown.click();
+//    	// Example: Select Active
+//    	WebElement activeOption = driver.findElement(By.xpath("//option[@value='true']"));
+//    	activeOption.click();
+
+    	// --- Benefit Description (English) ---
+    	WebElement benefitDescEnInput = driver.findElement(By.name("description_en"));
+    	benefitDescEnInput.clear();
+    	benefitDescEnInput.sendKeys("Benefit description in English " + uniqueSuffix);
+
+    	// --- Benefit Description (Arabic) ---
+    	WebElement benefitDescArInput = driver.findElement(By.name("description_ar"));
+    	benefitDescArInput.clear();
+    	benefitDescArInput.sendKeys("وصف الميزة بالعربية " + uniqueSuffix);
+
+    	// --- Submit Button ---
+    	WebElement submitButton = driver.findElement(By.xpath("//button[@type='submit' and span[text()='Submit']]"));
+    	if (submitButton.isEnabled() && submitButton.isDisplayed()) {
+    	    submitButton.click();
+    	    System.out.println("✅ Benefit form submitted successfully!");
+    	} else {
+    	    System.out.println("❌ Submit button not clickable!");
+    	}   
+    
+    }*/
+    
+    /*@Test(priority = 14)
+    public void test_Exclusive_Partner_Discounts() throws InterruptedException {
+
+    	// --- Navigate to Benefits page ---
+    	WebElement benefitsMenu = driver.findElement(By.xpath("//span[normalize-space()='Benefits']"));
+    	benefitsMenu.click();
+    	Thread.sleep(2000);
+
+    	// --- Navigate to Exclusive Partner tab ---
+    	WebElement exclusivePartnerTab = driver.findElement(By.xpath("//button[normalize-space()='Exclusive Partner']"));
+    	exclusivePartnerTab.click();
+    	Thread.sleep(2000);
+
+    	// --- Click on Create Exclusive Partner Discount ---
+    	WebElement createExclusivePartnerBtn = driver.findElement(By.xpath("//button[normalize-space()='Create Exclusive Partner Discount']"));
+    	createExclusivePartnerBtn.click();
+    	Thread.sleep(2000);
+    	
+    	String uniqueSuffix = String.valueOf(System.currentTimeMillis());
+
+        // --- Name (English) ---
+        WebElement nameEn = driver.findElement(By.name("name_en"));
+        nameEn.clear();
+        nameEn.sendKeys("Partner_EN_" + uniqueSuffix);
+
+        // --- Name (Arabic) ---
+        WebElement nameAr = driver.findElement(By.name("name_ar"));
+        nameAr.clear();
+        nameAr.sendKeys("شريك_AR_" + uniqueSuffix);
+
+//        // --- Image Upload ---
+//        WebElement imageUpload = driver.findElement(By.name("name_icon"));
+//        imageUpload.sendKeys("C:\\path\\to\\test-image.png"); // <-- Local file path
+
+        // --- Discount Code ---
+        WebElement discountCode = driver.findElement(By.name("coupon_code"));
+        discountCode.clear();
+        discountCode.sendKeys("DISC_" + uniqueSuffix);
+
+     // --- Start Date (1 day before today) ---
+        WebElement startDateBtn = driver.findElement(By.id(":r5b:-form-item"));
+        startDateBtn.click();
+        Thread.sleep(1000);
+
+        // Calculate yesterday's day number
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);
+        int dayOfMonth = yesterday.getDayOfMonth();
+
+        // Select yesterday from calendar popup
+        String xpathForYesterday = "//button[normalize-space()='" + dayOfMonth + "']";
+        WebElement yesterdayDate = driver.findElement(By.xpath(xpathForYesterday));
+        yesterdayDate.click();
+        Thread.sleep(1000);
+
+
+        // --- Expiry Date ---
+        WebElement expiryDateBtn = driver.findElement(By.id(":r5d:-form-item"));
+        expiryDateBtn.click();
+        Thread.sleep(1000);
+        // Example: select next day
+        driver.findElement(By.xpath("//button[normalize-space()='14']")).click();
+        Thread.sleep(1000);
+
+        // --- Active Status Dropdown ---
+        WebElement statusDropdown = driver.findElement(By.id(":r5f:-form-item"));
+        statusDropdown.click();
+        Thread.sleep(500);
+        driver.findElement(By.xpath("//option[@value='true']")).click(); // Active
+        Thread.sleep(500);
+
+        // --- Users Dropdown ---
+        WebElement usersDropdown = driver.findElement(By.xpath("//button[@aria-controls='radix-:r5i:']"));
+        usersDropdown.click();
+        Thread.sleep(1000);
+        // Example: select first available option
+        driver.findElement(By.xpath("(//div[contains(@class,'radix')])[1]")).click();
+        Thread.sleep(1000);
+
+        // --- Description (English) ---
+        WebElement descriptionEn = driver.findElement(By.name("description_en"));
+        descriptionEn.clear();
+        descriptionEn.sendKeys("Exclusive Partner description EN " + uniqueSuffix);
+
+        // --- Description (Arabic) ---
+        WebElement descriptionAr = driver.findElement(By.name("description_ar"));
+        descriptionAr.clear();
+        descriptionAr.sendKeys("وصف الشريك الحصري AR " + uniqueSuffix);
+
+        // --- Submit ---
+        WebElement submitBtn = driver.findElement(By.xpath("//button[normalize-space()='Submit']"));
+        submitBtn.click();
+        Thread.sleep(3000);
+
+        // --- Assertion (example: success message check) ---
+        boolean isSuccess = driver.findElements(By.xpath("//*[contains(text(),'successfully')]")).size() > 0;
+        Assert.assertTrue(isSuccess, "Exclusive Partner creation failed!");
+    
+    }*/
+    
+    
+    
+    @Test(priority = 15)
+    public void test_Coupons() throws InterruptedException {
+
+    	// --- Navigate to Benefits page ---
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    	WebElement benefitsMenu = wait.until(ExpectedConditions
+    	        .elementToBeClickable(By.xpath("//span[normalize-space()='Benefits']")));
+    	benefitsMenu.click();
+
+    	// --- Navigate to Exclusive Partner tab ---
+    	WebElement exclusivePartnerTab = wait.until(ExpectedConditions
+    	        .elementToBeClickable(By.xpath("//button[normalize-space()='Coupons']")));
+    	exclusivePartnerTab.click();
+
+    	// --- Click on Create Exclusive Partner Discount ---
+    	WebElement createExclusivePartnerBtn = wait.until(ExpectedConditions
+    	        .elementToBeClickable(By.xpath("//button[normalize-space()='Create Coupon']")));
+    	createExclusivePartnerBtn.click();
+    	
+    	
+
+    	    // --- Coupon Code ---
+    	    WebElement couponCode = wait.until(ExpectedConditions.elementToBeClickable(By.name("code")));
+    	    couponCode.clear();
+    	    String uniqueSuffix = null;
+			couponCode.sendKeys("COUPON" + uniqueSuffix);
+
+    	    // --- Coupon Type ---
+    	    WebElement couponType = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//select/option[@value='FLAT']")));
+    	    couponType.click();
+
+    	    // --- Coupon Value ---
+    	    WebElement couponValue = wait.until(ExpectedConditions.elementToBeClickable(By.name("value")));
+    	    couponValue.clear();
+    	    couponValue.sendKeys("500");
+
+//    	    // --- Start Date ---
+//    	    WebElement startDate = wait.until(ExpectedConditions.elementToBeClickable(By.id(":r67:-form-item")));
+//    	    startDate.click();
+//    	    // TODO: Select actual date from calendar
+//
+//    	    // --- Expiry Date ---
+//    	    WebElement expiryDate = wait.until(ExpectedConditions.elementToBeClickable(By.id(":r69:-form-item")));
+//    	    expiryDate.click();
+//    	    // TODO: Select actual date from calendar
+
+    	    // --- Maximum Number of Uses ---
+    	    WebElement maxUses = wait.until(ExpectedConditions.elementToBeClickable(By.name("max_number_of_uses")));
+    	    maxUses.clear();
+    	    maxUses.sendKeys("10");
+
+//    	    // --- Active Status ---
+//    	    WebElement activeStatus = wait.until(ExpectedConditions.elementToBeClickable(
+//    	            By.xpath("//select/option[@value='true']")));
+//    	    activeStatus.click();
+
+    	 // --- Branches ---
+    	    WebElement branches = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//label[@for='branches']/following-sibling::button")));
+    	    branches.click();
+    	    Thread.sleep(2000);
+    	  
+
+    	    // Select first option from the dropdown
+    	    WebElement firstBranchOption = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("(//div[@role='option'])[1]")));
+    	    firstBranchOption.click();
+
+
+    	    // --- Where the coupon can be used ---
+    	    WebElement usageScope = wait.until(ExpectedConditions.elementToBeClickable(
+    	    		By.xpath("//button[@type='button' and .//div[text()='Select']]")));
+    	    usageScope.click();
+    	    Thread.sleep(2000);
+    	    // TODO: Select option from dropdown
+
+    	    // --- PT Packages ---
+    	    WebElement ptPackages = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//label[@for='pt_packages']/following-sibling::button")));
+    	    ptPackages.click();
+    	    // TODO: Select option
+
+    	    // --- GX Packages ---
+    	    WebElement gxPackages = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//label[@for='gx_packages']/following-sibling::button")));
+    	    gxPackages.click();
+    	    // TODO: Select option
+
+    	    // --- Eligible Users ---
+    	    WebElement eligibleUsers = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//label[@for='users']/following-sibling::button")));
+    	    eligibleUsers.click();
+    	    // TODO: Select option
+
+    	    // --- Applicable Products ---
+    	    WebElement products = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//label[@for='products']/following-sibling::button")));
+    	    products.click();
+    	    // TODO: Select option
+
+    	    // --- Membership ---
+    	    WebElement membership = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//label[@for='membership_packages']/following-sibling::button")));
+    	    membership.click();
+    	    // TODO: Select option
+
+    	    // --- Freezing Addons ---
+    	    WebElement freezingAddons = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//label[@for='freezing_addons']/following-sibling::button")));
+    	    freezingAddons.click();
+    	    // TODO: Select option
+
+    	    // --- Guest Pass Packages ---
+    	    WebElement guestPass = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//label[@for='guest_pass_packages']/following-sibling::button")));
+    	    guestPass.click();
+    	    // TODO: Select option
+
+    	    // --- Submit ---
+    	    WebElement submitBtn = wait.until(ExpectedConditions.elementToBeClickable(
+    	            By.xpath("//button[@type='submit']//span[text()='Submit']")));
+    	    submitBtn.click();
+    	}
+
     
     
     

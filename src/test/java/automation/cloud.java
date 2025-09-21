@@ -1266,7 +1266,7 @@ public class cloud {
     
     
     
-    @Test(priority = 15)
+    /*@Test(priority = 15)
     public void test_Coupons() throws InterruptedException {
 
     	// --- Navigate to Benefits page ---
@@ -1390,7 +1390,28 @@ public class cloud {
     	    WebElement submitBtn = wait.until(ExpectedConditions.elementToBeClickable(
     	            By.xpath("//button[@type='submit']//span[text()='Submit']")));
     	    submitBtn.click();
-    	}
+    	}*/
+    
+    
+    @Test(priority = 16)
+    public void test_PTPackage() throws InterruptedException {
+
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // --- Navigate to Packages page ---
+        WebElement packagesMenu = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//span[normalize-space()='Packages']")));
+        packagesMenu.click();
+
+        // --- Click on Create PT Package ---
+        WebElement createPTPackageBtn = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//button[normalize-space()='Create PT Package']")));
+        createPTPackageBtn.click();
+        Thread.sleep(2000);
+    	
+    }
 
     
     

@@ -1410,6 +1410,83 @@ public class cloud {
                         By.xpath("//button[normalize-space()='Create PT Package']")));
         createPTPackageBtn.click();
         Thread.sleep(2000);
+        
+     // --- Package Name (English) ---
+        WebElement nameEn = driver.findElement(By.name("name_en"));
+        nameEn.clear();
+        String uniqueSuffix = null;
+		nameEn.sendKeys("Test Package EN " + uniqueSuffix);
+
+        // --- Package Name (Arabic) ---
+        WebElement nameAr = driver.findElement(By.name("name_ar"));
+        nameAr.clear();
+        nameAr.sendKeys("Test Package AR " + uniqueSuffix);
+
+//        // --- Upload Image ---
+//        WebElement imageUpload = driver.findElement(By.name("name_icon"));
+//        imageUpload.sendKeys("C:\\test-data\\package.png"); // update path
+
+        // --- Validity (Days) ---
+        WebElement validity = driver.findElement(By.name("validity"));
+        validity.clear();
+        validity.sendKeys("30");
+
+        // --- Number of Sessions ---
+        WebElement sessions = driver.findElement(By.name("number_of_sessions"));
+        sessions.clear();
+        sessions.sendKeys("10");
+
+        // --- Max Reschedules Allowed ---
+        WebElement maxReschedules = driver.findElement(By.name("number_of_reschedules_allowed"));
+        maxReschedules.clear();
+        maxReschedules.sendKeys("2");
+
+        // --- Cancellation Deadline (hours) ---
+        WebElement cancelDeadline = driver.findElement(By.name("max_hours_to_cancel_without_penalty"));
+        cancelDeadline.clear();
+        cancelDeadline.sendKeys("12");
+        
+     // --- Coupon Type ---
+	    WebElement couponType = wait.until(ExpectedConditions.elementToBeClickable(
+	            By.xpath("//select/option[@value='One to One']")));
+	    couponType.click();
+
+
+        // --- Price ---
+        WebElement price = driver.findElement(By.name("price"));
+        price.clear();
+        price.sendKeys("5000");
+
+        // --- Tax ---
+        WebElement tax = driver.findElement(By.name("tax"));
+        tax.clear();
+        tax.sendKeys("5");
+
+        // --- Discount ---
+        WebElement discount = driver.findElement(By.name("discount"));
+        discount.clear();
+        discount.sendKeys("10");
+
+        // --- Fees ---
+        WebElement fees = driver.findElement(By.name("fees"));
+        fees.clear();
+        fees.sendKeys("50");
+        Thread.sleep(6000);
+        
+     // --- Check if Create PT Package button exists ---
+        List<WebElement> createPTButtonList = driver.findElements(By.xpath("//button[normalize-space()='Create PT Package']"));
+        if (createPTButtonList.size() > 0) {
+            // --- Submit Form ---
+            WebElement submitButton = driver.findElement(By.xpath("//button[normalize-space()='Submit']"));
+            submitButton.click();
+
+            System.out.println("PT Package created successfully!");
+        } else {
+            System.out.println("Create PT Package button not found!");
+        }
+
+    
+
     	
     }
 

@@ -309,17 +309,34 @@ public class cloud {
     	driver.findElement(By.name("address_line_1")).sendKeys("Address1_" + uniqueSuffix);
     	driver.findElement(By.name("address_line_2")).sendKeys("Address2_" + uniqueSuffix);
 
-    	// --- Country ---
-    	WebElement countryBtn = driver.findElement(By.xpath("//button[@id=':r6u:-form-item']"));
-    	countryBtn.click();
-    	Thread.sleep(500);
-    	WebElement countryOption = driver.findElement(By.xpath("(//div[@role='option'])[5]")); // Bangladesh
-    	countryOption.click();
+//    	// --- Country ---
+//    	WebElement countryBtn = driver.findElement(By.xpath("//button[@id=':r6u:-form-item']"));
+//    	countryBtn.click();
+//    	Thread.sleep(500);
+//    	WebElement countryOption = driver.findElement(By.xpath("(//div[@role='option'])[5]")); // Bangladesh
+//    	countryOption.click();
 
     	// --- State, City, Zip ---
     	driver.findElement(By.name("state")).sendKeys("State_" + uniqueSuffix);
     	driver.findElement(By.name("city")).sendKeys("City_" + uniqueSuffix);
     	driver.findElement(By.name("postal_code")).sendKeys("12345");
+    	
+    	
+    	// 6. Membership Transfer Fee - VAT Number
+    	WebElement vatNumberField = driver.findElement(By.xpath("//input[@placeholder='VAT Number']"));
+    	vatNumberField.clear();
+    	vatNumberField.sendKeys("100" + uniqueSuffix1);
+
+    	// 6. Membership Transfer Fee - Company Registration Number
+    	WebElement companyRegNumberField = driver.findElement(By.xpath("//input[@placeholder='Company Registration Number']"));
+    	companyRegNumberField.clear();
+    	companyRegNumberField.sendKeys("100" + uniqueSuffix1);
+    	
+
+    	// 6. Membership Transfer Fee - Company Address (For Invoice)
+    	WebElement companyAddressField = driver.findElement(By.xpath("//textarea[@name='company_address']"));
+    	companyAddressField.clear();
+    	companyAddressField.sendKeys("100" + uniqueSuffix1);
 
 
        

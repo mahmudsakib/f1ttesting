@@ -19,6 +19,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+//Extent Reports imports
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class cloud {
 
@@ -26,9 +31,18 @@ public class cloud {
 
     private static WebDriver driver;
     private static final String baseUrl = "https://java.f1tdemo.xyz/login";
+    
+ // Extent Report variables
+    private static ExtentReports extent;
+    private static ExtentTest test;
 
     @BeforeClass
     public static void setUp() {
+    	// Setup Extent Report
+        ExtentSparkReporter spark = new ExtentSparkReporter("test-output/ExtentReport.html");
+        extent = new ExtentReports();
+        extent.attachReporter(spark);
+        
         // Setup ChromeDriver automatically using WebDriverManager
         WebDriverManager.chromedriver().setup();
         driver = (WebDriver) new ChromeDriver();
@@ -45,14 +59,18 @@ public class cloud {
     
     
     
-    /*@Test(priority = 1)
+    @Test(priority = 1)
     public void test_ValidEmailInvalidPassword() throws InterruptedException {
+    	
+    	test = extent.createTest("Test Case 1: Valid Email + Wrong Password");
+	
+	
         driver.get(baseUrl); // Reload login page
 
         // Enter valid email
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder='Email']"));
         emailField.clear();
-        emailField.sendKeys("mahmudsakib17@gmail.com");
+        emailField.sendKeys("seleniumjava@gmail.com");
         Thread.sleep(2000);
 
         // Enter wrong password
@@ -72,12 +90,14 @@ public class cloud {
         // Print result
         System.out.println("❌ Test 1: Valid Email + Wrong Password → Expected: Login Failed / Error Message");
 
-    }*/
+    }
     
     
 
-   /* @Test(priority = 2)
+    @Test(priority = 2)
     public void test_InvalidEmailValidPassword() throws InterruptedException {
+    	test = extent.createTest("Test Case 2: Invalid Email + Valid Password");
+
         driver.get(baseUrl); // Reload login page
 
         // Enter invalid email
@@ -103,12 +123,15 @@ public class cloud {
         // Print result
         System.out.println("❌ Test 2: Invalid Email + Valid Password → Expected: Login Failed / Error Message");
 
-    }*/
+    }
     
     
     //work
     @Test(priority = 3)
     public void test_ValidLogin() throws InterruptedException {
+    	
+    	test = extent.createTest("Test Case 3: Valid Email + Valid Password");
+    	
     	// Enter valid email
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder='Email']"));
         emailField.clear();
@@ -137,6 +160,10 @@ public class cloud {
     //work
     @Test(priority = 4)
     public void test_dashboard() throws InterruptedException {
+    	
+    	 test = extent.createTest("Test Case 4: Verify Dashboard Page");
+    	 
+    	 
         // Click on Dashboard menu
         driver.findElement(By.xpath("//span[normalize-space()='Dashboard']")).click();
         Thread.sleep(2000);
@@ -155,6 +182,7 @@ public class cloud {
     //work
     @Test(priority = 5)
     public void test_createrole() throws InterruptedException {
+    	test = extent.createTest("Test Case 5: Create Role");
 
 
     	// Navigate to Role Permissions
@@ -604,8 +632,9 @@ public class cloud {
     
     
     //work
-    /*@Test(priority = 8)
+    @Test(priority = 8)
     public void test_CreateLead() throws InterruptedException {
+    	test = extent.createTest("Test Case 8: Create Lead");
     	
     	// Navigate to Leads → Create Lead
         driver.findElement(By.xpath("//a[normalize-space()='Leads']")).click();
@@ -711,7 +740,7 @@ public class cloud {
         Thread.sleep(2000);
        
     
-    }*/
+    }
     
     
     /*@Test(priority = 9)
@@ -841,8 +870,10 @@ public class cloud {
     }*/
     
     
+    //work
    @Test(priority = 10)
     public void test_Createtrainerspecialty() throws InterruptedException {
+	   test = extent.createTest("Test Case 9: Create Trainer Specialty");
 
     	// Navigate to Settings
     	driver.findElement(By.xpath("//span[normalize-space()='Settings']")).click();
@@ -1122,9 +1153,10 @@ public class cloud {
     
     }*/
     
-    
-   /* @Test(priority = 13)
+    //work
+    @Test(priority = 13)
     public void test_Package_Benefits() throws InterruptedException {
+    	test = extent.createTest("Test Case 10: Package Benefits");
 
     	// --- Navigate to Partners page ---
     	driver.findElement(By.xpath("//span[normalize-space()='Benefits']")).click();
@@ -1172,7 +1204,7 @@ public class cloud {
     	    System.out.println("❌ Submit button not clickable!");
     	}   
     
-    }*/
+    }
     
     /*@Test(priority = 14)
     public void test_Exclusive_Partner_Discounts() throws InterruptedException {
@@ -1506,9 +1538,12 @@ public class cloud {
 
     @AfterClass
     public static void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+    	 if (driver != null) {
+             driver.quit();
+         }
+
+         // Save the Extent Report
+         extent.flush();
+     }
 
 }

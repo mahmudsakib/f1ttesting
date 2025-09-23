@@ -106,7 +106,7 @@ public class cloud {
     }*/
     
     
-
+    //work
     @Test(priority = 3)
     public void test_ValidLogin() throws InterruptedException {
     	// Enter valid email
@@ -134,7 +134,8 @@ public class cloud {
 
     }
     
-    /*@Test(priority = 4)
+    //work
+    @Test(priority = 4)
     public void test_dashboard() throws InterruptedException {
         // Click on Dashboard menu
         driver.findElement(By.xpath("//span[normalize-space()='Dashboard']")).click();
@@ -145,12 +146,14 @@ public class cloud {
         
         // Assertion - if this element is not displayed, test will FAIL
         Assert.assertTrue(dashboardHeader.isDisplayed());
+        Thread.sleep(3000);
 
         System.out.println("✅ Dashboard page is working fine!");
-    }*/
+    }
 
     
-    /*@Test(priority = 5)
+    //work
+    @Test(priority = 5)
     public void test_createrole() throws InterruptedException {
 
 
@@ -184,7 +187,7 @@ public class cloud {
     	}
     	Thread.sleep(2000);   
 
-    }*/
+    }
     
     
     
@@ -600,16 +603,16 @@ public class cloud {
     }*/
     
     
-    
+    //work
     /*@Test(priority = 8)
     public void test_CreateLead() throws InterruptedException {
     	
     	// Navigate to Leads → Create Lead
         driver.findElement(By.xpath("//a[normalize-space()='Leads']")).click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         driver.findElement(By.xpath("//a[normalize-space()='Create Lead']")).click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         // Generate unique suffix for regression testing
         String uniqueSuffix = String.valueOf(System.currentTimeMillis());
@@ -618,22 +621,25 @@ public class cloud {
         WebElement firstName = driver.findElement(By.xpath("//input[@name='first_name']"));
         firstName.clear();
         firstName.sendKeys("John" + uniqueSuffix);
+        Thread.sleep(1000);
 
         // 2. Last Name
         WebElement lastName = driver.findElement(By.xpath("//input[@name='last_name']"));
         lastName.clear();
         lastName.sendKeys("Doe" + uniqueSuffix);
+        Thread.sleep(1000);
 
         // 3. Email Address
         WebElement email = driver.findElement(By.xpath("//input[@name='email']"));
         email.clear();
         email.sendKeys("john.doe" + uniqueSuffix + "@example.com");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         // 4. Phone Number
         WebElement phone = driver.findElement(By.xpath("//input[@placeholder='Phone Number' and @type='tel']"));
         phone.clear();
         phone.sendKeys("+88017" + uniqueSuffix.substring(uniqueSuffix.length() - 8));
+        Thread.sleep(1000);
 
         // 5. Lead Status (dropdown)
         WebElement statusBtn = driver.findElement(By.xpath("//label[text()='Lead Status']"));
@@ -646,7 +652,7 @@ public class cloud {
         staffBtn.click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//div[@role='option'][1]")).click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         
         
 
@@ -654,12 +660,13 @@ public class cloud {
         WebElement address1 = driver.findElement(By.xpath("//input[@name='address_line_1']"));
         address1.clear();
         address1.sendKeys("123 Test Street " + uniqueSuffix);
+        Thread.sleep(1000);
 
         // 8. Address Line 2 (optional)
         WebElement address2 = driver.findElement(By.xpath("//input[@name='address_line_2']"));
         address2.clear();
         address2.sendKeys("Suite 45");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
        
 
         // 9. Country (dropdown)
@@ -667,25 +674,28 @@ public class cloud {
         countryBtn.click();
         Thread.sleep(1000);
         driver.findElement(By.xpath("//div[@role='option' and normalize-space()='Bangladesh']")).click();
+        Thread.sleep(1000);
         
 
         // 10. State
         WebElement state = driver.findElement(By.xpath("//input[@placeholder='State']"));
         state.clear();
         state.sendKeys("Dhaka");
+        Thread.sleep(1000);
         
 
         // 11. City
         WebElement city = driver.findElement(By.xpath("//input[@placeholder='City']"));
         city.clear();
         city.sendKeys("Dhaka");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         
 
         // 12. Zip Code
         WebElement zip = driver.findElement(By.xpath("//input[@placeholder='Zip Code']"));
         zip.clear();
         zip.sendKeys("1205");
+        Thread.sleep(1000);
         
 
 
@@ -831,7 +841,7 @@ public class cloud {
     }*/
     
     
-   /*@Test(priority = 10)
+   @Test(priority = 10)
     public void test_Createtrainerspecialty() throws InterruptedException {
 
     	// Navigate to Settings
@@ -892,7 +902,7 @@ public class cloud {
 
     
     
-    }*/
+    }
     
     
     /*@Test(priority = 11)
@@ -1393,7 +1403,7 @@ public class cloud {
     	}*/
     
     
-    @Test(priority = 16)
+    /*@Test(priority = 16)
     public void test_PTPackage() throws InterruptedException {
 
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -1484,11 +1494,8 @@ public class cloud {
         } else {
             System.out.println("Create PT Package button not found!");
         }
-
-    
-
     	
-    }
+    }*/
 
     
     

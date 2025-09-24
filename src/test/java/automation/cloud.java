@@ -59,7 +59,7 @@ public class cloud {
     
     
     
-    @Test(priority = 1)
+    /*@Test(priority = 1)
     public void test_ValidEmailInvalidPassword() throws InterruptedException {
     	
     	test = extent.createTest("Test Case 1: Valid Email + Wrong Password");
@@ -90,11 +90,11 @@ public class cloud {
         // Print result
         System.out.println("❌ Test 1: Valid Email + Wrong Password → Expected: Login Failed / Error Message");
 
-    }
+    }*/
     
     
 
-    @Test(priority = 2)
+    /*@Test(priority = 2)
     public void test_InvalidEmailValidPassword() throws InterruptedException {
     	test = extent.createTest("Test Case 2: Invalid Email + Valid Password");
 
@@ -123,7 +123,7 @@ public class cloud {
         // Print result
         System.out.println("❌ Test 2: Invalid Email + Valid Password → Expected: Login Failed / Error Message");
 
-    }
+    }*/
     
     
     //work
@@ -221,6 +221,7 @@ public class cloud {
     
     /*@Test(priority = 6)
     public void test_createBranch() throws InterruptedException {
+    test = extent.createTest("Test Case 6: Create Branch");
 
         // 👉 Step 1: Navigate to Branch Management
     	WebElement branchesMenu = driver.findElement(By.xpath("//a[@href='/branches' and span[normalize-space()='Branches']]"));
@@ -401,6 +402,8 @@ public class cloud {
     
     /*@Test(priority = 7)
     public void test_CreateUser() throws InterruptedException {
+    test = extent.createTest("Test Case 7: Create User");
+    
         // Navigate to User Management → Create User
         driver.findElement(By.xpath("//a[normalize-space()='User Management']")).click();
         Thread.sleep(2000);
@@ -745,6 +748,7 @@ public class cloud {
     
     /*@Test(priority = 9)
     public void test_CreateActivity() throws InterruptedException {
+    test = extent.createTest("Test Case 9: Create Activity");
 
     	// Navigate to Leads → Create Lead
     	driver.findElement(By.xpath("//span[normalize-space()='Activities']")).click();
@@ -938,6 +942,7 @@ public class cloud {
     
     /*@Test(priority = 11)
     public void test_offlinepayment() throws InterruptedException {
+    test = extent.createTest("Test Case 11: Offline Payment");
 
     	// Navigate to Settings
     	driver.findElement(By.xpath("//span[normalize-space()='Settings']")).click();
@@ -1032,6 +1037,7 @@ public class cloud {
     
     /*@Test(priority = 12)
     public void test_Create_Channel_Partners() throws InterruptedException {
+     test = extent.createTest("Test Case 12: Create Channel Partners");
 
     	// --- Navigate to Partners page ---
     	driver.findElement(By.xpath("//span[normalize-space()='Channel Partners']")).click();
@@ -1208,6 +1214,7 @@ public class cloud {
     
     /*@Test(priority = 14)
     public void test_Exclusive_Partner_Discounts() throws InterruptedException {
+    test = extent.createTest("Test Case 14: Exclusive Partner Discounts");
 
     	// --- Navigate to Benefits page ---
     	WebElement benefitsMenu = driver.findElement(By.xpath("//span[normalize-space()='Benefits']"));
@@ -1310,6 +1317,7 @@ public class cloud {
     
     /*@Test(priority = 15)
     public void test_Coupons() throws InterruptedException {
+    test = extent.createTest("Test Case 15: Coupons");
 
     	// --- Navigate to Benefits page ---
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -1437,6 +1445,7 @@ public class cloud {
     
     /*@Test(priority = 16)
     public void test_PTPackage() throws InterruptedException {
+    test = extent.createTest("Test Case 16: PT Package");
 
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 

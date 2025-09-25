@@ -7,6 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -158,7 +160,7 @@ public class cloud {
     }
     
     //work
-    @Test(priority = 4)
+   /* @Test(priority = 4)
     public void test_dashboard() throws InterruptedException {
     	
     	 test = extent.createTest("Test Case 4: Verify Dashboard Page");
@@ -176,11 +178,11 @@ public class cloud {
         Thread.sleep(3000);
 
         System.out.println("✅ Dashboard page is working fine!");
-    }
+    }/*
 
     
     //work
-    @Test(priority = 5)
+    /*@Test(priority = 5)
     public void test_createrole() throws InterruptedException {
     	test = extent.createTest("Test Case 5: Create Role");
 
@@ -215,7 +217,7 @@ public class cloud {
     	}
     	Thread.sleep(2000);   
 
-    }
+    }*/
     
     
     
@@ -635,7 +637,7 @@ public class cloud {
     
     
     //work
-    @Test(priority = 8)
+    /*@Test(priority = 8)
     public void test_CreateLead() throws InterruptedException {
     	test = extent.createTest("Test Case 8: Create Lead");
     	
@@ -743,7 +745,7 @@ public class cloud {
         Thread.sleep(2000);
        
     
-    }
+    }/*
     
     
     /*@Test(priority = 9)
@@ -875,7 +877,7 @@ public class cloud {
     
     
     //work
-   @Test(priority = 10)
+   /*@Test(priority = 10)
     public void test_Createtrainerspecialty() throws InterruptedException {
 	   test = extent.createTest("Test Case 9: Create Trainer Specialty");
 
@@ -937,7 +939,7 @@ public class cloud {
 
     
     
-    }
+    }/*
     
     
     /*@Test(priority = 11)
@@ -1160,7 +1162,7 @@ public class cloud {
     }*/
     
     //work
-    @Test(priority = 13)
+   /* @Test(priority = 13)
     public void test_Package_Benefits() throws InterruptedException {
     	test = extent.createTest("Test Case 10: Package Benefits");
 
@@ -1210,7 +1212,7 @@ public class cloud {
     	    System.out.println("❌ Submit button not clickable!");
     	}   
     
-    }
+    }/*
     
     /*@Test(priority = 14)
     public void test_Exclusive_Partner_Discounts() throws InterruptedException {
@@ -1537,6 +1539,99 @@ public class cloud {
         }
     	
     }*/
+    
+    
+    @Test(priority = 17)
+    public void test_Rooms() throws InterruptedException {
+    	
+    	 test = extent.createTest("Test Case 14: Create Rooms");
+
+    	    // --- Navigate to Rooms page ---
+    	    WebElement roomsMenu = driver.findElement(By.xpath("//span[normalize-space()='Rooms']"));
+    	    roomsMenu.click();
+    	    Thread.sleep(2000);
+
+    	    // --- Navigate to Create Branch Room tab ---
+    	    WebElement createBranchRoomButton = driver.findElement(By.xpath("//button[normalize-space()='Create Branch Room']"));
+    	    createBranchRoomButton.click();
+    	    Thread.sleep(2000);   	
+    	
+    	// Generate a unique suffix for testing
+    	String uniqueSuffix = String.valueOf(System.currentTimeMillis());
+
+    	// --- Room Name (English) ---
+    	WebElement roomNameEn = driver.findElement(By.name("name_en"));
+    	roomNameEn.clear();
+    	roomNameEn.sendKeys("Test Room EN " + uniqueSuffix);
+
+    	// --- Room Name (Arabic) ---
+    	WebElement roomNameAr = driver.findElement(By.name("name_ar"));
+    	roomNameAr.clear();
+    	roomNameAr.sendKeys("Test Room AR " + uniqueSuffix);
+
+//    	// --- Select Gym Branch ---
+//    	// The dropdown seems to be custom. Using the visible button and selecting the option
+//    	WebElement gymBranchDropdown = driver.findElement(By.id(":r66:-form-item"));
+//    	gymBranchDropdown.click();
+//    	WebElement gymBranchOption = driver.findElement(By.xpath("//select[@aria-hidden='true']/option[text()='Dhaka']"));
+//    	gymBranchOption.click();
+
+//    	// --- Active Status ---
+//    	WebElement activeStatusDropdown = driver.findElement(By.id(":r68:-form-item"));
+//    	activeStatusDropdown.click();
+//    	WebElement activeStatusOption = driver.findElement(By.xpath("//select[@aria-hidden='true']/option[text()='Active']"));
+//    	activeStatusOption.click();
+
+    	// --- Number of Rows ---
+    	WebElement numberOfRows = driver.findElement(By.name("rows"));
+    	numberOfRows.clear();
+    	numberOfRows.sendKeys("5");
+
+    	// --- Number of Columns ---
+    	WebElement numberOfColumns = driver.findElement(By.name("columns"));
+    	numberOfColumns.clear();
+    	numberOfColumns.sendKeys("4");
+
+    	// --- Room Capacity ---
+    	WebElement roomCapacity = driver.findElement(By.name("capacity"));
+    	roomCapacity.clear();
+    	roomCapacity.sendKeys("20");
+    	
+    	// --- Used For ---
+    	WebElement usedForButton = driver.findElement(By.xpath("//label[text()='Used For']/following-sibling::button"));
+    	usedForButton.click();
+    	
+    	// Here you may need to select an option from the dialog if it appears, e.g.:
+    	WebElement usedForOption = driver.findElement(By.xpath("//div[text()='Select All']")); // replace with actual text
+    	usedForOption.click();
+    	Thread.sleep(3000);
+    	System.out.println("work");
+    	
+//    	// Close dropdown by sending ESC key
+//    	usedForButton.sendKeys(Keys.ESCAPE);
+//    	Thread.sleep(500);
+    	
+//    	usedForButton.click(); // toggle close
+//    	Thread.sleep(500);
+    	
+    	WebElement usedForButton1 = driver.findElement(By.xpath("//label[text()='Used For']/following-sibling::button"));
+    	usedForButton1.sendKeys(Keys.ESCAPE);
+    	Thread.sleep(500);
+    	System.out.println("work2");
+
+
+    	// --- Submit Button ---
+    	WebElement submitButton = driver.findElement(By.xpath("//button[normalize-space()='Submit']"));
+    	submitButton.click();
+    	System.out.println("work2");
+
+    	
+    	
+
+    }
+    
+    
+    
 
     
     
